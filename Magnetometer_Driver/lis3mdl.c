@@ -43,21 +43,21 @@ extern status_t Lis3mdlGetFullScaleConfig(Lis3mdlScale_t *configScale_pen)
 
         switch (scaleBits_u8)
         {
-	case 0x00:
-		*configScale_pen = LIS3MDL_SCALE_4G;
-		break;
-	case 0x01:
-		*configScale_pen = LIS3MDL_SCALE_8G;
-		break;
-	case 0x02:
-		*configScale_pen = LIS3MDL_SCALE_12G;
-		break;
-	case 0x03:
-		*configScale_pen = LIS3MDL_SCALE_16G;
-		break;
-	default:
-		*configScale_pen = LIS3MDL_SCALE_UNKNOWN;
-		break;
+		case 0x00:
+			*configScale_pen = LIS3MDL_SCALE_4G;
+			break;
+		case 0x01:
+			*configScale_pen = LIS3MDL_SCALE_8G;
+			break;
+		case 0x02:
+			*configScale_pen = LIS3MDL_SCALE_12G;
+			break;
+		case 0x03:
+			*configScale_pen = LIS3MDL_SCALE_16G;
+			break;
+		default:
+			*configScale_pen = LIS3MDL_SCALE_UNKNOWN;
+			break;
         }
 
         return STATUS_OK;

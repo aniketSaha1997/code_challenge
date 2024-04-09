@@ -37,26 +37,27 @@ extern status_t Lis3mdlGetFullScaleConfig(Lis3mdlScale_t *configScale_pen)
 
     status = i2c_read(LIS3MDL_I2C_BUS_ADDRESS, LIS3MDL_CTRL_REG2, 1u, &readBuffer_u8);
 
-    if (status == STATUS_OK) {
+    if (status == STATUS_OK) 
+    {
         uint8_t scaleBits_u8 = (readBuffer_u8 >> 6) & 0x03;
 
         switch (scaleBits_u8)
         {
-		case 0x00:
-			*configScale_pen = LIS3MDL_SCALE_4G;
-			break;
-		case 0x01:
-			*configScale_pen = LIS3MDL_SCALE_8G;
-			break;
-		case 0x02:
-			*configScale_pen = LIS3MDL_SCALE_12G;
-			break;
-		case 0x03:
-			*configScale_pen = LIS3MDL_SCALE_16G;
-			break;
-		default:
-			*configScale_pen = LIS3MDL_SCALE_UNKNOWN;
-			break;
+	case 0x00:
+		*configScale_pen = LIS3MDL_SCALE_4G;
+		break;
+	case 0x01:
+		*configScale_pen = LIS3MDL_SCALE_8G;
+		break;
+	case 0x02:
+		*configScale_pen = LIS3MDL_SCALE_12G;
+		break;
+	case 0x03:
+		*configScale_pen = LIS3MDL_SCALE_16G;
+		break;
+	default:
+		*configScale_pen = LIS3MDL_SCALE_UNKNOWN;
+		break;
         }
 
         return STATUS_OK;
@@ -71,11 +72,11 @@ extern status_t Lis3mdlGetFullScaleConfig(Lis3mdlScale_t *configScale_pen)
 extern status_t Lis3mdlSetOutputDataRate(Lis3mdlSpeedConfig_st  config_st)
 {
 	uint8_t regVal_u8 = ((config_st.dataRate_en << 2) & LIS3MDL_SPEED_MASK) | (config_st.operatingMode_en & 0x03) | (config_st.fastOdr_u8 & LIS3MDL_FAST_ODR_MASK);
-
-
+	
+	
 	status_t status = i2c_write(LIS3MDL_I2C_BUS_ADDRESS, LIS3MDL_CTRL_REG1,
 								 1u, &regVal_u8);
-
+	
 	return status;
 }
 
